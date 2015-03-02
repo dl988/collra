@@ -1,0 +1,9 @@
+- File and folder structure:
+	+ folder components: we should use bower_component to manage.
+	+ file js/static.js: is a static server
+		How to use it: 
+			+ install: npm install connect serve-static -g
+			+ run: node server.js
+			+ test: http://localhost:8888/
+			
+- Css compiler: We will use Less.js (to quickly use LessCss)
