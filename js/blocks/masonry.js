@@ -1,9 +1,8 @@
 define([
 	'jQuery',
-	'Handlebars', 
 	'CollraApi',
 	'CollraLoader',
-], function(jQuery, Handlebars)
+], function(jQuery)
 {
 	
 	function Masonry()
