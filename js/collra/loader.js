@@ -72,7 +72,7 @@ define(['jQuery','Handlebars'], function(jQuery, Handlebars)
 			}
 		};
 
-		$.fn.render = function (templateName, data) {
+		$.fn.render = function (templateName, data, callback) {
 			var url = resolveTemplatePath(templateName);
 			if (cache.hasOwnProperty(url)) {
 				this.html(cache[url](data)).trigger('render.handlebars', [templateName, data]);
@@ -81,9 +81,14 @@ define(['jQuery','Handlebars'], function(jQuery, Handlebars)
 				$.get(url, function (template) {
 					cache[url] = Handlebars.compile(template);
 					$this.html(cache[url](data)).trigger('render.handlebars', [templateName, data]);
+					
+					if(typeof callback === 'function'){
+					   callback.call(this);
+					}
 				}, 'text');
 			}
-			return this;
+			
+			//return this;
 		};
 	};
 
