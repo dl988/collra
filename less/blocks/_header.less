@@ -12,14 +12,48 @@
 		.search-field {
 			display: none;
 		}
+		
+		.search-field-clone {
+			clear: both;
+			padding: 20px;
+		}
+		
+		.logo{
+			width: 50%;
+			box-sizing: border-box;
+			
+			img {
+				max-width: 100%;
+			}
+		}
+		
+		.user-information {
+			margin-top: 15px;
+			
+			.user-name {
+				display: table-cell;
+			}
+		}
 	}
 
 	@media @tablet {
-
+		.user-information {
+			margin-top: 30px;
+			
+			.user-name {
+				display: none;
+			}
+		}
 	}
 
 	@media @desktop {
-
+		.user-information {
+			margin-top: 30px;
+			
+			.user-name {
+				display: table-cell;
+			}
+		}
 	}
 
 	// Global Styles
@@ -41,7 +75,6 @@
 	
 	.user-information {
 		display: table;
-		margin-top: 30px;
 		
 		.cf();
 
@@ -71,15 +104,17 @@
 			}
 		}
 		
-		.avatar,
-		.user-name {
+		.avatar {
 			display: table-cell;
 		}		
 	}
 	
 	.search-field {
 		padding: 40px 20px;
-		
+	}
+	
+	.search-field,
+	.search-field-clone {
 		input {
 			width: 100%;
 			height: 30px;

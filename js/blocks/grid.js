@@ -10,12 +10,12 @@ define([
 	function Grid()
 	{
 		var collra = new collraApi();
-		var $grid = $(".b-grid");
+		var $grid = $(".js-grid");
 		
 		$grid.render('template/item', collra.search(), function()
 		{
 			new ImagesLoaded($grid.find('img'), function(){
-				var msnry = new Masonry('.b-grid', {
+				var msnry = new Masonry('.js-grid', {
 					itemSelector: '.item',
 				});
 			});

@@ -1,6 +1,24 @@
-/* This is available when header is fixed */
-body {
-	padding-top: 118px;
+/* Visibility */
+.is-hidden {
+	display: none;
+	
+	@media @phone {
+		&.visible-on-phone {
+			display: block;
+		}
+	}
+
+	@media @tablet {
+		&.visible-on-tablet {
+			display: block;
+		}
+	}
+
+	@media @desktop {
+		&.visible-on-desktop {
+			display: block;
+		}
+	}
 }
 
 /* Layout */
@@ -26,14 +44,5 @@ body {
 		content: '';
 		display: block;
 		clear: both;
-	}
-}
-
-/* Home Page */
-.home-page {
-	.main-home-page {
-		.layout-left {
-			width: 80%;
-		}
 	}
 }

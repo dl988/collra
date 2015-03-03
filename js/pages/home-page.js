@@ -16,8 +16,10 @@
 	require([
 		'Plugins',
 		'../blocks/grid',
+		'../blocks/header',
 		'Modernizr'
-	], function(plugins, grid){
+	], function(plugins, grid, header){
 		grid();
+		header();
 	});
 })();
