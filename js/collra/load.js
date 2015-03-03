@@ -1,4 +1,3 @@
-// ----------------------------
 // Load handlebar template. 
 function load(tpl, json) 
 {
