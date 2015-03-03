@@ -9,7 +9,7 @@ define([
 	function Masonry()
 	{
 		var collra = new collraApi();
-		$("#list").render('template/item', collra.search());
+		$(".js-masonry").render('template/item', collra.search());
 	};
 	
 	return Masonry;
