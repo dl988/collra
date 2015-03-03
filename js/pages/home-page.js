@@ -6,15 +6,18 @@
 			CollraApi: '../collra/api',
 			CollraLoader: '../collra/loader',
 			Modernizr: '../vendor/modernizr-2.6.2.min',
+			Bridget: '../vendor/jquery.bridget',
+			Masonry: '../vendor/masonry.min',
+			ImagesLoaded: '../vendor/imagesloaded.min',
 			Plugins: '../plugins'
 		}
 	});
 	
 	require([
 		'Plugins',
-		'../blocks/masonry',
+		'../blocks/grid',
 		'Modernizr'
-	], function(plugins, masonry){
-		masonry();
+	], function(plugins, grid){
+		grid();
 	});
 })();

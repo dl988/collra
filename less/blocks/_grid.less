@@ -5,21 +5,36 @@
  *
  */
 
-.b-masonry {
+.b-grid {
 
 	// Media Queries
 	@media @phone {
-
+		.item {
+			width: 100%;
+		}
 	}
 
 	@media @tablet {
-
+		.item {
+			width: 33.3333%;
+		}
 	}
 
 	@media @desktop {
-
+		.item {
+			width: 25%;
+		}
 	}
 
 	// Global Styles
-
+	
+	.item {
+		.wrap {
+			padding: 10px;
+		}
+		
+		img {
+			max-width: 100%;
+		}
+	}
 }

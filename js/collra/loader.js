@@ -88,7 +88,7 @@ define(['jQuery','Handlebars'], function(jQuery, Handlebars)
 				}, 'text');
 			}
 			
-			//return this;
+			return this;
 		};
 	};
 
