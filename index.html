@@ -22,7 +22,7 @@
 		<script>
 		  less = {
 			env: "development",
-			async: false,
+			async: true,
 			fileAsync: false,
 			poll: 1000,
 			functions: {},
@@ -40,7 +40,24 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <div id="list"></div>
+		<header class="b-header">
+			<div class="logo">Logo</div>
+			<div class="search-field">Search</div>
+			<div class="user-information">User</div>
+		</header>
+		<section class="layout-main">
+			<article class="layout-left">
+				<div class="b-masonry-grid">
+					Gird
+				</div>
+			</article>
+			<aside class="layout-right">
+				<div class="b-sidebar">
+					Sidebar
+				</div>
+			</aside>
+		</section>
+        <!--<div id="list"></div>-->
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
@@ -51,10 +68,8 @@
         <script src="js/collra/loader.js"></script>
 
         <script type="text/javascript">
-
             var collra = new collraApi();
             $("#list").render('template/item', collra.search());
-      
         </script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
