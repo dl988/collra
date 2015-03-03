@@ -18,12 +18,14 @@
 			padding: 20px;
 		}
 		
-		.logo{
+		.logo {
 			width: 50%;
 			box-sizing: border-box;
 			
-			img {
-				max-width: 100%;
+			&:after {
+				width: 180px;
+				height: 60px;
+				background-image: url("../img/collra-logo-1.png");
 			}
 		}
 		
@@ -37,8 +39,22 @@
 	}
 
 	@media @tablet {
+		.search-field {
+			padding: 27px 20px;
+		}
+		
+		.logo {
+			margin-top: 5px;
+			
+			&:after {
+				width: 71px;
+				height: 49px;
+				background-image: url("../img/collra-logo-2.png");
+			}
+		}
+		
 		.user-information {
-			margin-top: 30px;
+			margin-top: 15px;
 			
 			.user-name {
 				display: none;
@@ -47,6 +63,18 @@
 	}
 
 	@media @desktop {
+		.search-field {
+			padding: 40px 20px;
+		}
+		
+		.logo {
+			&:after {
+				width: 244px;
+				height: 96px;
+				background-image: url("../img/collra-logo-1.png");
+			}
+		}
+		
 		.user-information {
 			margin-top: 30px;
 			
@@ -68,8 +96,11 @@
 	.logo {
 		padding: 10px;
 		
-		img {
-			max-height: 96px;
+		&:after {
+			content: '';
+			display: block;
+			background-repeat: no-repeat;
+			background-size: contain;
 		}
 	}
 	
@@ -106,11 +137,7 @@
 		
 		.avatar {
 			display: table-cell;
-		}		
-	}
-	
-	.search-field {
-		padding: 40px 20px;
+		}
 	}
 	
 	.search-field,
