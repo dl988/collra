@@ -9,7 +9,9 @@
 
 	// Media Queries
 	@media @phone {
-
+		.search-field {
+			display: none;
+		}
 	}
 
 	@media @tablet {
@@ -21,7 +23,12 @@
 	}
 
 	// Global Styles
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
 	margin-bottom: 30px;
+	background: #fff;
 	
 	.logo {
 		padding: 10px;
