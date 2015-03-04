@@ -9,17 +9,20 @@
 			Bridget: '../vendor/jquery.bridget',
 			Masonry: '../vendor/masonry.min',
 			ImagesLoaded: '../vendor/imagesloaded.min',
-			Plugins: '../plugins'
+			Plugins: '../plugins',
+			BlockGrid: '../blocks/grid',
+			BlockHeader: '../blocks/header'
 		}
 	});
 	
 	require([
 		'Plugins',
-		'../blocks/grid',
-		'../blocks/header',
+		'BlockGrid',
+		'BlockHeader',
 		'Modernizr'
-	], function(plugins, grid, header){
-		grid();
-		header();
+	], function(plugins, BlockGrid, BlockHeader){
+		var blockHeader = new BlockHeader();
+		blockHeader.init();
+		BlockGrid();
 	});
 })();

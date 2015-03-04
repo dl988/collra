@@ -1,14 +1,17 @@
 define([
-	'jQuery',
 	'Masonry',
 	'ImagesLoaded',
+	'BlockHeader',
+	'jQuery',
 	'CollraApi',
 	'CollraLoader',
-], function(jQuery, Masonry, ImagesLoaded)
+], function(Masonry, ImagesLoaded, Header)
 {
 	
 	function Grid()
 	{
+		var header = new Header(); header.formInit();
+		
 		var collra = new collraApi();
 		var $grid = $(".js-grid");
 		var $html = $('html, body');

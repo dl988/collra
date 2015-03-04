@@ -6,16 +6,21 @@ define([
 	
 	function Header()
 	{
-		var $body = $('body');
-		var $win = $(window);
-		var $header = $('.js-header');
+		this._$body = $('body');
+		this._$win = $(window);
+		this._$header = $('.js-header');
+	};
+	
+	Header.prototype.init = function()
+	{
+		var self = this;
 		
 		var checkIsXsmall = function()
 		{
-			if ($win.width() <= 768)
+			if (self._$win.width() <= 768)
 			{
-				$header.removeClass('is-fixed');
-				$body.removeAttr('style');
+				self._$header.removeClass('is-fixed');
+				self._$body.removeAttr('style');
 				return true;
 			}
 		}
@@ -24,16 +29,21 @@ define([
 		{
 			if(checkIsXsmall()) return;
 			
-			$header.addClass('is-fixed');
-			$body.css({'padding-top': $header.height() + 'px'});
+			self._$header.addClass('is-fixed');
+			self._$body.css({'padding-top': self._$header.height() + 'px'});
 		}
 		
 		update();
 		
-		$win.on('resize.header', function(){
+		self._$win.on('resize.header', function(){
 			update();
 		});
-	};
+	}
+	
+	Header.prototype.formInit = function()
+	{
+		console.log('form init');
+	}
 	
 	return Header;
 });
