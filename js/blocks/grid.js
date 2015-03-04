@@ -12,7 +12,7 @@ define([
 		var collra = new collraApi();
 		var $grid = $(".js-grid");
 		var $html = $('html, body');
-		
+		console.log(collra.search());
 		$grid.render('template/item', collra.search(), function()
 		{
 			var $gridImage = $grid.find('img');
