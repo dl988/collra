@@ -85,13 +85,16 @@
 	}
 
 	// Global Styles
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 100%;
 	margin-bottom: 30px;
 	background: #fff;
 	z-index: @z-normal;
+	
+	&.is-fixed {
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100%;
+	}
 	
 	.logo {
 		padding: 10px;
