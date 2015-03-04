@@ -12,7 +12,7 @@ define([
 		var collra = new collraApi();
 		var $grid = $(".js-grid");
 		var $html = $('html, body');
-		console.log(collra.search());
+		
 		$grid.render('template/item', collra.search(), function()
 		{
 			var $gridImage = $grid.find('img');
@@ -45,7 +45,17 @@ define([
 					
 					var $commentList = $('<div/>', {
 						class: 'comment-list'
-					}).render('template/itemCommentList', itemDetail.comments);
+					}).render('template/itemCommentList', itemDetail.comments, function(){
+						
+						var $commentForm = $('<div/>', {
+							class: 'user-wrap'
+						}).render('template/commentForm', {
+							id: itemDetail.id,
+							user: itemDetail.user
+						}, function(){
+							$commentList.children().append($commentForm);
+						});
+					});
 					
 					$grid.html($container.append($itemAttribute).append($commentList));
 					$html.animate({ scrollTop: 0 }, "slow");

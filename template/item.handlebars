@@ -3,6 +3,7 @@
 	<div class="wrap">
 		<div class="image">
 			<img src="{{item.img}}">
+			<div class="rating rating-{{statistic.rating}}"><i class="fa fa-star"></i></i></i> <span class="number">{{statistic.rating}}</span></div>
 		</div>
 		<div class="information">
 			<h2 class="title">[{{id}}]{{item.title}}</h2>
@@ -11,7 +12,6 @@
 				<li class="view"><i class="fa fa-eye"></i> {{statistic.views}}</li>
 				<li class="like"><i class="fa fa-heart"></i> {{statistic.likes}}</li>
 				<li class="comment"><i class="fa fa-comment"></i></i> {{statistic.comments}}</li>
-				<li class="rating"><i class="fa fa-star"></i></i></i> {{statistic.rating}}</li>
 			</ul>
 		</div>
 		<div class="user">
@@ -19,7 +19,7 @@
 				<a href="#" title="user profile"><img src="{{user.avatar}}" alt="{{user.name}}"/></a>
 			</div>
 			<div class="user-name">
-				<a href="#" title="{{user.screen_name}}"><span class="first-name">{{user.first_name}}</span><span class="last-name">{{user.last_name}}</span></a>
+				<a href="#" title="{{user.screen_name}}">{{user.screen_name}}</a>
 			</div>
 		</div>
 	</div>
