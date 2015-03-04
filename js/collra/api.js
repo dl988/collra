@@ -115,7 +115,7 @@ function collraApi() {
 		    'last_name': availableNames[_generateNumber(availableNames.length) - 1],
 		    'screen_name': availableNames[_generateNumber(availableNames.length) - 1].substring(0, 2) +
 							availableNames[_generateNumber(availableNames.length) - 1].substring(0, 2),
-		    'avatar': 'img/user/user.png'
+		    'avatar': 'img/user/avatar.png'
 		}
 
         return user

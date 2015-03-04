@@ -11,6 +11,7 @@ define([
 	{
 		var collra = new collraApi();
 		var $grid = $(".js-grid");
+		var $html = $('html, body');
 		
 		$grid.render('template/item', collra.search(), function()
 		{
@@ -22,11 +23,33 @@ define([
 					itemSelector: '.item',
 				});
 				
-				
-			});
-			
-			$gridItem.on('click', function(){
-				console.log($(this).data('id'));
+				$gridItem.on('click', function(){
+					msnry.destroy();
+					
+					var $this = $(this);
+					var $wrapSideBar = $('.js-wrap-sidebar');
+					var $mainHomepage = $('.js-main-home-page');
+					var itemID = $this.data('id');
+					var itemDetail = collra.getItem(itemID);
+					
+					$wrapSideBar.hide();
+					$mainHomepage.addClass('is-full-width');
+					
+					var $container = $('<div/>', {
+						class: 'is-viewed-item'
+					}).html($this);
+					
+					var $itemAttribute = $('<div/>', {
+						class: 'item-attibute'
+					}).render('template/itemAttributeList', itemDetail.item);
+					
+					var $commentList = $('<div/>', {
+						class: 'comment-list'
+					}).render('template/itemCommentList', itemDetail.comments);
+					
+					$grid.html($container.append($itemAttribute).append($commentList));
+					$html.animate({ scrollTop: 0 }, "slow");
+				});
 			});
 		});
 	};

@@ -1,0 +1,13 @@
+<div class="wrap">
+{{#each this}}
+	<div class="user-wrap">
+		<div class="layout">
+			<div class="avatar layout-left"><img src="{{user.avatar}}" alt="{{user.screen_name}}"/></div>
+			<div class="name-and-comment layout-middle">
+				<div class="name"><a href="#" title="{{user.screen_name}}">{{user.screen_name}}</a></div>
+				<div class="comment">{{comment}}</div>
+			</div>
+		</div>
+	</div>
+{{/each}}
+</div>

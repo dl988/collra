@@ -12,11 +12,64 @@
 		.item {
 			width: 100%;
 		}
+		
+		.is-viewed-item {
+			padding-top: 1px;
+			
+			.item-attibute {
+				padding: 10px;
+				box-sizing: border-box;
+				
+				.wrap {
+					.rounded(6px);
+					padding: 10px;
+					overflow: hidden;
+					background-color: #fff;
+				}
+			}
+			
+			.item-attibute,
+			.comment-list {
+				padding: 10px;
+			}
+		}
 	}
 
 	@media @tablet {
 		.item {
 			width: 33.3333%;
+		}
+		
+		.is-viewed-item {
+			.item {
+				float: left;
+				width: 40%;
+			}
+			
+			.item-attibute {
+				float: left;
+				width: 60%;
+			}
+			
+			.comment-list {
+				clear: both;
+			}
+			
+			.item-attibute {
+				box-sizing: border-box;
+				
+				.wrap {
+					.rounded(6px);
+					padding: 10px;
+					overflow: hidden;
+					background-color: #fff;
+				}
+			}
+			
+			.item-attibute,
+			.comment-list {
+				padding: 10px;
+			}
 		}
 	}
 
@@ -24,9 +77,78 @@
 		.item {
 			width: 25%;
 		}
+		
+		.is-viewed-item {
+			.item {
+				float: left;
+				width: 40%;
+			}
+			
+			.item-attibute {
+				float: left;
+				width: 60%;
+			}
+			
+			.comment-list {
+				clear: both;
+			}
+			
+			.item-attibute {
+				box-sizing: border-box;
+				
+				.wrap {
+					.rounded(6px);
+					padding: 10px;
+					overflow: hidden;
+					background-color: #fff;
+				}
+			}
+			
+			.item-attibute,
+			.comment-list {
+				padding: 10px;
+			}
+		}
 	}
 
 	// Global Styles
+	.is-viewed-item {
+		.user-wrap {
+			.rounded(6px);
+			padding: 10px;
+			overflow: hidden;
+			background-color: #fff;
+			margin-bottom: 10px;
+			
+			.avatar {
+				.rounded(50%);
+				
+				overflow: hidden;
+				height: 30px;
+				float: left;
+				margin-right: 10px;
+				
+				img {
+					height: 100%;
+				}
+			}
+			
+			.name {
+					font-weight: bold;
+					margin-bottom: 5px;
+			}
+		}
+		
+		.item-attibute {
+			li {
+				margin-bottom: 10px;
+				
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
 	
 	.item {
 		.wrap {
