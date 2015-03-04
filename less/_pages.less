@@ -4,12 +4,12 @@
 	// Media Queries
 	@media @phone {
 		.main-home-page {
-			.layout-left {
+			& > .layout-left {
 				float: none;
 				width: 100%;
 			}
 			
-			.layout-middle {
+			& > .layout-middle {
 				display: none;
 			}
 		}
@@ -17,12 +17,12 @@
 
 	@media @tablet {
 		.main-home-page {
-			.layout-left {
+			& > .layout-left {
 				float: none;
 				width: 100%;
 			}
 			
-			.layout-middle {
+			& > .layout-middle {
 				display: none;
 			}
 		}
@@ -30,19 +30,22 @@
 
 	@media @desktop {
 		.main-home-page {
-			.layout-left {
+			& > .layout-left {
 				width: 80%;
 				float: left;
 			}
 			
-			.layout-middle {
+			& > .layout-middle {
 				display: block;
 				position: fixed;
 				height: 100%;
 				right: 0;
 				width: 20%;
-				background: gray;
 			}
 		}
+	}
+	
+	.main-home-page {
+		background: #E9E9E9;
 	}
 }

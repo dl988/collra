@@ -14,10 +14,19 @@ define([
 		
 		$grid.render('template/item', collra.search(), function()
 		{
-			new ImagesLoaded($grid.find('img'), function(){
+			var $gridImage = $grid.find('img');
+			var $gridItem = $(".js-grid").find('.item');
+			
+			new ImagesLoaded($gridImage, function(){
 				var msnry = new Masonry('.js-grid', {
 					itemSelector: '.item',
 				});
+				
+				
+			});
+			
+			$gridItem.on('click', function(){
+				console.log($(this).data('id'));
 			});
 		});
 	};

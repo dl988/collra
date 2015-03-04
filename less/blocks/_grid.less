@@ -30,11 +30,85 @@
 	
 	.item {
 		.wrap {
-			padding: 10px;
+			.rounded(6px);
+			overflow: hidden;
+			background-color: #fff;
+			margin: 10px;
 		}
 		
-		img {
-			max-width: 100%;
+		.image {
+			img {
+				width: 100%;
+			}
+		}
+		
+		.information {
+			.description {
+				margin-top: 10px;
+			}
+			
+			.statistic {
+				margin-top: 20px;
+				text-align: right;
+				
+				li {
+					display: inline-block;
+				}
+				
+				.comment {
+					margin-left: 10px;
+				}
+			}
+			
+			&:after {
+				content: '';
+				display: block;
+				height: 2px;
+				background-color: #cacaca;
+				margin-top: 20px;
+			}
+		}
+		
+		.user {
+			display: table;
+			
+			.cf();
+
+			.avatar {
+				.rounded(50%);
+				
+				overflow: hidden;
+				height: 30px;
+				float: left;
+				margin-right: 10px;
+				
+				img {
+					height: 100%;
+				}
+			}
+
+			.user-name {
+				vertical-align: middle;
+				padding-right: 10px;
+				
+				span {
+					display: inline-block;
+					
+					&.first-name {
+						margin-right: 5px;
+					}
+				}
+			}
+			
+			.avatar,
+			.user-name {
+				display: table-cell;
+			}
+		}
+		
+		.information,
+		.user {
+			padding: 10px;
 		}
 	}
 }

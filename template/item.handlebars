@@ -1,13 +1,25 @@
 {{#each this}}
-<div class="item">
+<div class="item" data-id="{{id}}">
 	<div class="wrap">
-		<img src="{{item.img}}">
-		<h2>[{{id}}]{{item.title}}</h2>
-		<div>{{item.description}}</div>
-		<ul>
-			<li>{{statistic.views}}</li>
-			<li>{{statistic.likes}}</li>
-		</ul>
+		<div class="image">
+			<img src="{{item.img}}">
+		</div>
+		<div class="information">
+			<h2 class="title">[{{id}}]{{item.title}}</h2>
+			<div class="description">{{item.description}}</div>
+			<ul class="statistic">
+				<li class="view"><i class="fa fa-eye"></i> {{statistic.views}}</li>
+				<li class="comment"><i class="fa fa-heart"></i> {{statistic.likes}}</li>
+			</ul>
+		</div>
+		<div class="user">
+			<div class="avatar">
+				<a href="#" title="user profile"><img src="img/user/avatar.png" alt="avatar"/></a>
+			</div>
+			<div class="user-name">
+				<a href="#" title="Linh Nguyen"><span class="first-name">Linh</span><span class="last-name">Nguyen</span></a>
+			</div>
+		</div>
 	</div>
 </div>
 {{/each}}

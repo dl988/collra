@@ -22,10 +22,12 @@
 			width: 50%;
 			box-sizing: border-box;
 			
-			&:after {
-				width: 180px;
-				height: 60px;
-				background-image: url("../img/collra-logo-1.png");
+			a {
+				&:after {
+					width: 180px;
+					height: 60px;
+					background-image: url("../img/collra-logo-1.png");
+				}
 			}
 		}
 		
@@ -46,10 +48,12 @@
 		.logo {
 			margin-top: 5px;
 			
-			&:after {
-				width: 71px;
-				height: 49px;
-				background-image: url("../img/collra-logo-2.png");
+			a {
+				&:after {
+					width: 71px;
+					height: 49px;
+					background-image: url("../img/collra-logo-2.png");
+				}
 			}
 		}
 		
@@ -68,10 +72,12 @@
 		}
 		
 		.logo {
-			&:after {
-				width: 244px;
-				height: 96px;
-				background-image: url("../img/collra-logo-1.png");
+			a {
+				&:after {
+					width: 244px;
+					height: 96px;
+					background-image: url("../img/collra-logo-1.png");
+				}
 			}
 		}
 		
@@ -85,9 +91,9 @@
 	}
 
 	// Global Styles
-	margin-bottom: 30px;
 	background: #fff;
 	z-index: @z-normal;
+	.box-shadow(0 1px 2px 0 rgba(0, 0, 0, 0.22));
 	
 	&.is-fixed {
 		position: fixed;
@@ -99,11 +105,13 @@
 	.logo {
 		padding: 10px;
 		
-		&:after {
-			content: '';
-			display: block;
-			background-repeat: no-repeat;
-			background-size: contain;
+		a {
+			&:after {
+				content: '';
+				display: block;
+				background-repeat: no-repeat;
+				background-size: contain;
+			}
 		}
 	}
 	
