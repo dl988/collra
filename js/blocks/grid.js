@@ -87,7 +87,7 @@ define([
 							class: 'back-button'
 						}).html('<i class="fa fa-angle-left"></i>');
 						
-						var Gridtmp = self._$grid.children().detach();
+						var gridTmp = self._$grid.children().detach();
 						
 						self._$grid.append($container.append($backButton).append($itemAttribute).append($commentList));
 						
@@ -105,9 +105,9 @@ define([
 							$mainHomepage.removeClass('is-full-width');
 
 							self._$grid.children().detach();
-							self._$grid.append(Gridtmp);
+							self._$grid.append(gridTmp);
 							
-							$(document).scrollTop( itemPosition );
+							self._$html.scrollTop( itemPosition );
 							isViewed = false;
 							
 							return false;
