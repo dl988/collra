@@ -39,16 +39,18 @@ define([
 					itemSelector: '.item'
 				});
 				
+				var isViewed = false;
+				
 				self._$grid.on('click', function(e){
 					var itemPosition = self._$doc.scrollTop();
-					
+
 					var $itemClicked = $(e.target).closest('.item');
 					var $wrapSideBar = $('.js-wrap-sidebar');
 					var $mainHomepage = $('.js-main-home-page');
 					var itemID = $itemClicked.data('id');
 					var itemDetail = collra.getItem(itemID);
-					
-					if (itemID === null) return ;
+
+					if (itemID === null || isViewed === true) return ;
 					
 					$wrapSideBar.hide();
 					$mainHomepage.addClass('is-full-width');
@@ -102,9 +104,12 @@ define([
 							self._$grid.children().detach();
 							self._$grid.append(Gridtmp);
 							$(document).scrollTop( itemPosition );
+							isViewed = false;
 							
 							return false;
 						});
+						
+						isViewed = true;
 					});
 				});
 			});
