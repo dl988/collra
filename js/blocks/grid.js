@@ -101,8 +101,14 @@ define([
 						
 						self._$grid.find('.back-button').on('click', function(){
 							
+							$wrapSideBar.show();
+							$mainHomepage.removeClass('is-full-width');
+
 							self._$grid.children().detach();
-							self._$grid.append(Gridtmp);
+							self._$grid.append(Gridtmp).each(function(){
+								self._$masonry.masonry('reloadItems');
+							});
+							
 							$(document).scrollTop( itemPosition );
 							isViewed = false;
 							
