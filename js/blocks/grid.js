@@ -105,9 +105,7 @@ define([
 							$mainHomepage.removeClass('is-full-width');
 
 							self._$grid.children().detach();
-							self._$grid.append(Gridtmp).each(function(){
-								self._$masonry.masonry('reloadItems');
-							});
+							self._$grid.append(Gridtmp);
 							
 							$(document).scrollTop( itemPosition );
 							isViewed = false;
