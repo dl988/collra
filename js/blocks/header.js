@@ -1,5 +1,4 @@
 define([
-	'Modernizr',
 	'jQuery',
 ], function()
 {
