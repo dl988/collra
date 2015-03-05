@@ -74,7 +74,7 @@ define(['jQuery','Handlebars'], function(jQuery, Handlebars)
 
 		$.fn.render = function (templateName, data, callback) {
 			var url = resolveTemplatePath(templateName);
-			if (cache.hasOwnProperty(url)) {
+			if (cache.hasOwnProperty(url) && typeof callback !== 'function') {
 				this.html(cache[url](data)).trigger('render.handlebars', [templateName, data]);
 			} else {
 				var $this = this;
