@@ -41,6 +41,8 @@
 	}
 
 	@media @tablet {
+		position: fixed;
+		
 		.search-field {
 			padding: 27px 20px;
 		}
@@ -67,6 +69,8 @@
 	}
 
 	@media @desktop {
+		position: fixed;
+		
 		.search-field {
 			padding: 40px 20px;
 		}
@@ -91,16 +95,12 @@
 	}
 
 	// Global Styles
+	left: 0;
+	top: 0;
+	width: 100%;
 	background: #fff;
 	z-index: @z-normal;
 	.box-shadow(0 1px 2px 0 rgba(0, 0, 0, 0.22));
-	
-	&.is-fixed {
-		position: fixed;
-		left: 0;
-		top: 0;
-		width: 100%;
-	}
 	
 	.logo {
 		padding: 10px;

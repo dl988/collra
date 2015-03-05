@@ -13,7 +13,7 @@ define([
 	
 	Header.prototype.init = function()
 	{
-		this.setStatus();
+		//this.setStatus();
 		this.formInit();
 	}
 	

@@ -2,6 +2,7 @@ define([
 	'Masonry',
 	'ImagesLoaded',
 	'jQuery',
+	'Bridget',
 	'CollraApi',
 	'CollraLoader',
 ], function(Masonry, ImagesLoaded)
@@ -11,6 +12,7 @@ define([
 	{
 		this._$grid = $(".js-grid");
 		this._$html = $('html, body');
+		this._$doc = $(document);
 	};
 	
 	Grid.prototype.init = function()
@@ -24,24 +26,29 @@ define([
 		var self = this;
 		var collra = new collraApi();
 		
-		self._$grid.render('template/item', collra.search(), function()
+		self._$grid.render('template/list', collra.search(), function()
 		{
+			self._$masonry = self._$grid.find('.js-wrap-masonry');
 			var $gridImage = self._$grid.find('img');
 			
 			new ImagesLoaded($gridImage, function(){
-				self.msnry = new Masonry('.js-grid', {
-					itemSelector: '.item',
+				
+				$.bridget('masonry', Masonry );
+				
+				self._$masonry.masonry({
+					itemSelector: '.item'
 				});
 				
 				self._$grid.on('click', function(e){
-					
-					self.msnry.destroy();
+					var itemPosition = self._$doc.scrollTop();
 					
 					var $itemClicked = $(e.target).closest('.item');
 					var $wrapSideBar = $('.js-wrap-sidebar');
 					var $mainHomepage = $('.js-main-home-page');
 					var itemID = $itemClicked.data('id');
 					var itemDetail = collra.getItem(itemID);
+					
+					if (itemID === null) return ;
 					
 					$wrapSideBar.hide();
 					$mainHomepage.addClass('is-full-width');
@@ -74,9 +81,30 @@ define([
 							});
 						});
 						
+						var $backButton = $('<div/>', {
+							class: 'back-button'
+						}).html('<i class="fa fa-angle-left"></i>');
+						
 						var Gridtmp = self._$grid.children().detach();
-						self._$grid.append($container.append($itemAttribute).append($commentList));
-						self._$html.animate({ scrollTop: 0 }, "slow");
+						
+						self._$grid.append($container.append($backButton).append($itemAttribute).append($commentList));
+						
+						self._$html.on("scroll mousedown DOMMouseScroll mousewheel keyup", function(){
+							self._$html.stop();
+						});
+
+						self._$html.animate({ scrollTop: 0 }, 'slow', function(){
+							self._$html.off("scroll mousedown DOMMouseScroll mousewheel keyup");
+						});
+						
+						self._$grid.find('.back-button').on('click', function(){
+							
+							self._$grid.children().detach();
+							self._$grid.append(Gridtmp);
+							$(document).scrollTop( itemPosition );
+							
+							return false;
+						});
 					});
 				});
 			});
