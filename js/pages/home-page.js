@@ -22,7 +22,9 @@
 		'Modernizr'
 	], function(plugins, BlockGrid, BlockHeader){
 		var blockHeader = new BlockHeader();
+		var blockGrid = new BlockGrid();
+		
 		blockHeader.init();
-		BlockGrid();
+		blockGrid.init();
 	});
 })();

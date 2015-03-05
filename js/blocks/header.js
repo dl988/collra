@@ -13,6 +13,12 @@ define([
 	
 	Header.prototype.init = function()
 	{
+		this.setStatus();
+		this.formInit();
+	}
+	
+	Header.prototype.setStatus = function()
+	{
 		var self = this;
 		
 		var checkIsXsmall = function()
