@@ -1,6 +1,6 @@
 <!----- Planing time: -------->
 
-- 2/3/2015 to 6/3/2015:
+- 2/3/2015 to 5/3/2015:
  + Setup working environment.
  + Define my template, file and folder (using for large project).
  + Reading and analyst your requirement. 
