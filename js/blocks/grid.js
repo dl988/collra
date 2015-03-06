@@ -49,7 +49,7 @@ define([
 					var itemID = $itemClicked.data('id');
 					var itemDetail = collra.getItem(itemID);
 
-					if (itemID === null || isViewed === true) return ;
+					if (itemID === null || isViewed === true || typeof itemDetail === 'undefined') return ;
 					
 					$wrapSideBar.hide();
 					$mainHomepage.addClass('is-full-width');

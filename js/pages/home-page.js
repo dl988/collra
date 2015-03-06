@@ -20,6 +20,7 @@
 			'Tagit': ['jQuery', 'jQueryUI'],
 			'Masonry': ['jQuery'],
 			'Bridget': ['jQuery'],
+			'CollraLoader': ['jQuery', 'Handlebars'],
 		}
 	});
 	

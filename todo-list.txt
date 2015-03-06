@@ -16,7 +16,8 @@
 - 8/3/2015 to 9/3/2015:
  + Implement level 2: Make some nice animations of all the featured items (rated 4 or 5) in the sidebar. Add a infinite scroll
 to request more items and Add to the result.
- + Unit test and fix bug
+ + Unit test and fix bug.
+ + Write document for the code.
 
 <!----- Done: -------->
 
