@@ -1,5 +1,5 @@
 - File and folder structure:
-	+ folder components: we should use bower_component to manage.
+	+ folder components: we should use bower_component to manage and should be move the /js/vendor into here.
 	+ file js/static.js: is a static server
 		How to use it: 
 			+ install: npm install connect serve-static -g

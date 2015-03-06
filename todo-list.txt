@@ -43,3 +43,6 @@ to request more items and Add to the result.
    - Use css media queries instead of javascript on the header position and padding, when changes from xsmall layout.
    
  + Implement for item detail and show a back button.
+ 
+ - 6/3/2015
+  + Center the number in start (Grid block)

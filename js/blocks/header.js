@@ -1,5 +1,5 @@
 define([
-	'jQuery',
+	'Tagit',
 ], function()
 {
 	
@@ -8,12 +8,13 @@ define([
 		this._$body = $('body');
 		this._$win = $(window);
 		this._$header = $('.js-header');
+		this._$tagit = this._$header.find('.js-tagit');
 	};
 	
 	Header.prototype.init = function()
 	{
 		//this.setStatus();
-		this.formInit();
+		this.Tagit();
 	}
 	
 	Header.prototype.setStatus = function()
@@ -45,9 +46,9 @@ define([
 		});
 	}
 	
-	Header.prototype.formInit = function()
+	Header.prototype.Tagit = function()
 	{
-		console.log('form init');
+		this._$tagit.tagit();
 	}
 	
 	return Header;

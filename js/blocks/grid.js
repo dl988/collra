@@ -1,7 +1,6 @@
 define([
 	'Masonry',
 	'ImagesLoaded',
-	'jQuery',
 	'Bridget',
 	'CollraApi',
 	'CollraLoader',

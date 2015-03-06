@@ -1,7 +1,9 @@
 (function() {
 	require.config({
 		paths: {
+			domReady: '../vendor/domReady',
 			jQuery: '../vendor/jquery-1.10.2.min',
+			jQueryUI: '../../components/jquery-ui/jquery-ui.min',
 			Handlebars: '../vendor/handlebars-v2.0.0',
 			CollraApi: '../collra/api',
 			CollraLoader: '../collra/loader',
@@ -10,21 +12,29 @@
 			Masonry: '../vendor/masonry.min',
 			ImagesLoaded: '../vendor/imagesloaded.min',
 			Plugins: '../plugins',
+			Tagit: '../../components/tag-it-master/js/tag-it',
 			BlockGrid: '../blocks/grid',
 			BlockHeader: '../blocks/header'
+		},
+		shim: {
+			'Tagit': ['jQuery', 'jQueryUI'],
+			'Masonry': ['jQuery'],
+			'Bridget': ['jQuery'],
 		}
 	});
 	
 	require([
-		'Plugins',
+		'domReady',
 		'BlockGrid',
 		'BlockHeader',
 		'Modernizr'
-	], function(plugins, BlockGrid, BlockHeader){
-		var blockHeader = new BlockHeader();
-		var blockGrid = new BlockGrid();
-		
-		blockHeader.init();
-		blockGrid.init();
+	], function(domReady, BlockGrid, BlockHeader){
+		domReady(function(){
+			var blockHeader = new BlockHeader();
+			var blockGrid = new BlockGrid();
+			
+			blockHeader.init();
+			blockGrid.init();
+		});
 	});
 })();
