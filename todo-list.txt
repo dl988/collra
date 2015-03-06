@@ -1,0 +1,45 @@
+<!----- Planing time: -------->
+
+- 2/3/2015 to 6/3/2015:
+ + Setup working environment.
+ + Define my template, file and folder (using for large project).
+ + Reading and analyst your requirement. 
+ + Implement level 1: block header, grid list and item detail.
+ + Unit test and fix bug (include your feedback)...
+
+- 6/3/2015 to 7/3/2015:
+ + Fix bug follow your feedback.
+ + Center the number in start (Grid block).
+ + Implement search field.
+ + Unit test and fix bugs on all device and browser (Chrome, Firefox, Safari on desktop, HTC one M8, Samsung Note 3, Tablet Samsung 10.1):  (not include IOS).
+ 
+- 8/3/2015 to 9/3/2015:
+ + Implement level 2: Make some nice animations of all the featured items (rated 4 or 5) in the sidebar. Add a infinite scroll
+to request more items and Add to the result.
+ + Unit test and fix bug
+
+<!----- Done: -------->
+
+- 2/3/2015:
+ + Setup working environment.
+ + Add less.js compiler.
+ + Restructure to mamage the file and folder.
+ 
+- 3/3/2015:
+ + Design the html prototype.
+ + Make naming convention: for the html prototype, css, javascript.
+ + Using Less for Font-awesome and Normalize.
+ + Using requireJs to load javascript (module) to easy maintain..
+ + Implement for the block header.
+ 
+- 4/3/2015:
+ + Improvement for the block header.
+ + Implement for the block gird.
+ 
+- 5/3/2015:
+ + Improvement and fix bug for the block header and grid, include your feedback:
+   - Instead of doing a click handler on all item in the grid, do one on the container and check event.target and jquery.closest to get the clicked item. 
+   - Keep the result element in a variable using jquery detach. And append it when you closes the detail view.
+   - Use css media queries instead of javascript on the header position and padding, when changes from xsmall layout.
+   
+ + Implement for item detail and show a back button.
