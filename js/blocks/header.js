@@ -48,7 +48,11 @@ define([
 	
 	Header.prototype.Tagit = function()
 	{
-		this._$tagit.tagit();
+		this._$tagit.tagit({
+			availableTags: ["c++", "java", "php", "javascript", "ruby", "python", "c"],
+			autocomplete: {delay: 0, minLength: 2},
+			showAutocompleteOnFocus: true,
+		});
 	}
 	
 	return Header;

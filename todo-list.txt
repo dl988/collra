@@ -10,7 +10,7 @@
 - 6/3/2015 to 7/3/2015:
  + Fix bug follow your feedback.
  + Center the number in start (Grid block).
- + Implement search field.
+ + Implement the search field.
  + Unit test and fix bugs on all device and browser (Chrome, Firefox, Safari on desktop, HTC one M8, Samsung Note 3, Tablet Samsung 10.1):  (not include IOS).
  
 - 8/3/2015 to 9/3/2015:
@@ -24,7 +24,7 @@ to request more items and Add to the result.
 - 2/3/2015:
  + Setup working environment.
  + Add less.js compiler.
- + Restructure to mamage the file and folder.
+ + Restructure to manage the file and folder.
  
 - 3/3/2015:
  + Design the html prototype.

@@ -1,6 +1,7 @@
 define([
 	'Masonry',
 	'ImagesLoaded',
+	'InfiniteScroll',
 	'Bridget',
 	'CollraApi',
 	'CollraLoader',
@@ -29,6 +30,12 @@ define([
 		{
 			self._$masonry = self._$grid.find('.js-wrap-masonry');
 			var $gridImage = self._$grid.find('img');
+			
+			var $pageNav = $('<div/>', {
+				class: 'js-page-nav'
+			}).html('<a href="index2.html"></a>');
+			
+			self._$grid.append($pageNav);
 			
 			new ImagesLoaded($gridImage, function(){
 				

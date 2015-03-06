@@ -13,6 +13,7 @@
 			ImagesLoaded: '../vendor/imagesloaded.min',
 			Plugins: '../plugins',
 			Tagit: '../../components/tag-it-master/js/tag-it',
+			InfiniteScroll: '../../components/infinite-scroll-master/jquery.infinitescroll.min',
 			BlockGrid: '../blocks/grid',
 			BlockHeader: '../blocks/header'
 		},
@@ -20,6 +21,7 @@
 			'Tagit': ['jQuery', 'jQueryUI'],
 			'Masonry': ['jQuery'],
 			'Bridget': ['jQuery'],
+			'InfiniteScroll': ['jQuery'],
 			'CollraLoader': ['jQuery', 'Handlebars'],
 		}
 	});
