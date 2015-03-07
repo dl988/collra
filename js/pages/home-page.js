@@ -15,7 +15,8 @@
 			Tagit: '../../components/tag-it-master/js/tag-it',
 			InfiniteScroll: '../../components/infinite-scroll-master/jquery.infinitescroll.min',
 			BlockGrid: '../blocks/grid',
-			BlockHeader: '../blocks/header'
+			BlockHeader: '../blocks/header',
+			BlockSidebar: '../blocks/sidebar'
 		},
 		shim: {
 			'Tagit': ['jQuery', 'jQueryUI'],
@@ -30,14 +31,17 @@
 		'domReady',
 		'BlockGrid',
 		'BlockHeader',
+		'BlockSidebar',
 		'Modernizr'
-	], function(domReady, BlockGrid, BlockHeader){
+	], function(domReady, BlockGrid, BlockHeader, BlockSidebar){
 		domReady(function(){
 			var blockHeader = new BlockHeader();
 			var blockGrid = new BlockGrid();
+			var blockSidebar = new BlockSidebar();
 			
 			blockHeader.init();
 			blockGrid.init();
+			blockSidebar.init();
 		});
 	});
 })();

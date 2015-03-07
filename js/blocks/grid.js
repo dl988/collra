@@ -1,11 +1,12 @@
 define([
 	'Masonry',
 	'ImagesLoaded',
+	'BlockSidebar',
 	'InfiniteScroll',
 	'Bridget',
 	'CollraApi',
 	'CollraLoader',
-], function(Masonry, ImagesLoaded)
+], function(Masonry, ImagesLoaded, BlockSidebar)
 {
 	
 	function Grid()
@@ -25,6 +26,7 @@ define([
 		
 		var self = this;
 		var collra = new collraApi();
+		var sidebar = new BlockSidebar;
 		
 		self._$grid.render('template/list', collra.search(), function()
 		{
@@ -51,14 +53,13 @@ define([
 					var itemPosition = self._$doc.scrollTop();
 
 					var $itemClicked = $(e.target).closest('.item');
-					var $wrapSideBar = $('.js-wrap-sidebar');
 					var $mainHomepage = $('.js-main-home-page');
 					var itemID = $itemClicked.data('id');
 					var itemDetail = collra.getItem(itemID);
 
 					if (itemID === null || isViewed === true || typeof itemDetail === 'undefined') return ;
 					
-					$wrapSideBar.hide();
+					sidebar.hideWrapSidebar();
 					$mainHomepage.addClass('is-full-width');
 					
 					var $container = $('<div/>', {
@@ -107,7 +108,7 @@ define([
 						
 						self._$grid.find('.back-button').on('click', function(){
 							
-							$wrapSideBar.show();
+							sidebar.showWrapSidebar();
 							$mainHomepage.removeClass('is-full-width');
 
 							self._$grid.children().detach();
