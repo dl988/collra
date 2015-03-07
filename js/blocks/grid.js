@@ -14,11 +14,30 @@ define([
 		this._$grid = $(".js-grid");
 		this._$html = $('html, body');
 		this._$doc = $(document);
+		this._$win = $(window);
+		Grid._isLockInfiniteScroll = false;
 	};
 	
 	Grid.prototype.init = function()
 	{
 		this.generate();
+	}
+	
+	Grid.prototype.lockInfiniteScroll = function()
+	{
+		Grid._isLockInfiniteScroll = true;
+	}
+	
+	Grid.prototype.unlockInfiniteScroll = function()
+	{
+		Grid._isLockInfiniteScroll = false;
+	}
+	
+	Grid.prototype.isLockInfiniteScroll = function()
+	{
+		if(Grid._isLockInfiniteScroll){
+			return true;
+		}
 	}
 	
 	Grid.prototype.generate = function()
@@ -35,9 +54,9 @@ define([
 			
 			var $pageNav = $('<div/>', {
 				class: 'js-page-nav'
-			}).html('<a href="index2.html"></a>');
+			});
 			
-			self._$grid.append($pageNav);
+			$pageNav.insertAfter('.js-grid');
 			
 			new ImagesLoaded($gridImage, function(){
 				
@@ -60,6 +79,7 @@ define([
 					if (itemID === null || isViewed === true || typeof itemDetail === 'undefined') return ;
 					
 					sidebar.lockWrapSidebar();
+					self.lockInfiniteScroll();
 					var $container = $('<div/>', {
 						class: 'is-viewed-item'
 					}).render('template/itemDetail', {
@@ -110,6 +130,7 @@ define([
 							
 							sidebar.unlockWrapSidebar();
 							sidebar.showWrapSidebar();
+							self.unlockInfiniteScroll();
 							$mainHomepage.removeClass('is-full-width');
 
 							self._$grid.children().detach();
@@ -126,6 +147,29 @@ define([
 					});
 				});
 			});
+			
+			self._$doc.bind('scroll.grid', function() {
+				
+				if(self.isLockInfiniteScroll()) return;
+				
+				var $this = $(this);
+				var $pageNav = self._$doc.find('.js-page-nav');
+				var topPageNav = $pageNav.offset().top;
+				
+				if($this.scrollTop() >= topPageNav + $pageNav.innerHeight() - self._$win.height()){
+					console.log('trigger');
+					var $data = $('<div/>').render('template/list', collra.search(), function()
+					{
+						var $dataImage = $data.find('img');
+						
+						self._$masonry.append($data).masonry('appended', $data);
+						
+						new ImagesLoaded($dataImage, function(){
+							self._$masonry.masonry();
+						});
+					});
+				}
+			})
 		});
 	}
 	

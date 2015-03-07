@@ -18,8 +18,7 @@ define([
 		var self = this;
 		
 		var updateWrapSidebar = function()
-		{			
-			console.log(SideBar._isLockWrapSidebar);
+		{
 			if(self._$wrapSidebar.css('display') == 'block'){
 				SideBar._defaultWrapSidebar = true;
 				SideBar._isShowWrapSidebar = true;
