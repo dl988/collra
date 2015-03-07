@@ -47,3 +47,10 @@ to request more items and Add to the result.
  
  - 6/3/2015
   + Center the number in start (Grid block)
+  + Implement the search field in the block header
+  + Unit test and fix bugs
+ - 7/3/2015
+  + Improvement for block: header, grid (search field)
+  + Unit test and fix bugs.
+ - 8/3/2015
+  + Implement: infinite scroll
