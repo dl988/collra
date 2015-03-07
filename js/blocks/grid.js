@@ -58,10 +58,7 @@ define([
 					var itemDetail = collra.getItem(itemID);
 
 					if (itemID === null || isViewed === true || typeof itemDetail === 'undefined') return ;
-					
-					sidebar.hideWrapSidebar();
-					$mainHomepage.addClass('is-full-width');
-					
+
 					var $container = $('<div/>', {
 						class: 'is-viewed-item'
 					}).render('template/itemDetail', {
@@ -94,6 +91,8 @@ define([
 							class: 'back-button'
 						}).html('<i class="fa fa-angle-left"></i>');
 						
+						sidebar.hideWrapSidebar();
+						$mainHomepage.addClass('is-full-width');
 						var gridTmp = self._$grid.children().detach();
 						
 						self._$grid.append($container.append($backButton).append($itemAttribute).append($commentList));
