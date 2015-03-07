@@ -23,7 +23,6 @@
 			'Masonry': ['jQuery'],
 			'WayPoints': ['jQuery'],
 			'Bridget': ['jQuery'],
-			'InfiniteScroll': ['jQuery'],
 			'CollraLoader': ['jQuery', 'Handlebars'],
 		}
 	});

@@ -2,7 +2,6 @@ define([
 	'Masonry',
 	'ImagesLoaded',
 	'BlockSidebar',
-	'InfiniteScroll',
 	'Bridget',
 	'CollraApi',
 	'CollraLoader',
