@@ -113,6 +113,7 @@ define([
 
 							self._$grid.children().detach();
 							self._$grid.append(gridTmp);
+							self._$masonry.masonry();
 							
 							self._$html.scrollTop( itemPosition );
 							isViewed = false;

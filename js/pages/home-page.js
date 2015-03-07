@@ -35,9 +35,9 @@
 		'Modernizr'
 	], function(domReady, BlockGrid, BlockHeader, BlockSidebar){
 		domReady(function(){
-			var blockHeader = new BlockHeader();
-			var blockGrid = new BlockGrid();
-			var blockSidebar = new BlockSidebar();
+			var blockHeader = new BlockHeader;
+			var blockGrid = new BlockGrid;
+			var blockSidebar = new BlockSidebar;
 			
 			blockHeader.init();
 			blockGrid.init();

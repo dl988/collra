@@ -8,7 +8,6 @@ define([
 		this._$body = $('body');
 		this._$win = $(window);
 		this._$header = $('.js-header');
-		this._$tagit = this._$header.find('.js-tagit');
 	};
 	
 	Header.prototype.init = function()
@@ -48,6 +47,7 @@ define([
 	
 	Header.prototype.Tagit = function()
 	{
+		this._$tagit = this._$header.find('.js-tagit');
 		this._$tagit.tagit({
 			availableTags: ["c++", "java", "php", "javascript", "ruby", "python", "c"],
 			autocomplete: {delay: 0, minLength: 2},
