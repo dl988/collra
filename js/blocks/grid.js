@@ -156,12 +156,12 @@ define([
 				var topPageNav = $pageNav.offset().top;
 				
 				if($this.scrollTop() >= topPageNav + $pageNav.innerHeight() - self._$win.height()){
-					console.log('trigger');
 					var $data = $('<div/>').render('template/list', collra.search(), function()
 					{
+						var $dataAppend = $data.find('.item');
 						var $dataImage = $data.find('img');
 						
-						self._$masonry.append($data).masonry('appended', $data);
+						self._$masonry.append($dataAppend).masonry('appended', $dataAppend);
 						
 						new ImagesLoaded($dataImage, function(){
 							self._$masonry.masonry();
