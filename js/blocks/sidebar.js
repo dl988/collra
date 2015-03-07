@@ -8,6 +8,7 @@ define([
 		this._$win = $(window);
 		this._$wrapSidebar = $('.js-wrap-sidebar');
 		this._$sidebar = $('.js-sidebar');
+		SideBar._isLockWrapSidebar = false;
 		SideBar._isShowWrapSidebar = null;
 		SideBar._defaultWrapSidebar = null;
 	};
@@ -17,7 +18,8 @@ define([
 		var self = this;
 		
 		var updateWrapSidebar = function()
-		{
+		{			
+			console.log(SideBar._isLockWrapSidebar);
 			if(self._$wrapSidebar.css('display') == 'block'){
 				SideBar._defaultWrapSidebar = true;
 				SideBar._isShowWrapSidebar = true;
@@ -25,6 +27,18 @@ define([
 				SideBar._defaultWrapSidebar = false;
 				SideBar._isShowWrapSidebar = false;
 			}			
+			
+			if(self._$win.width() <= 1200){
+				SideBar._defaultWrapSidebar = false;
+			}else{
+				SideBar._defaultWrapSidebar = true;
+			}
+			
+			if(SideBar._isLockWrapSidebar === true){
+				self._$wrapSidebar.hide();
+			}else{
+				self._$wrapSidebar.removeAttr('style');
+			}
 		}
 		
 		updateWrapSidebar();
@@ -44,6 +58,16 @@ define([
 		if(SideBar._defaultWrapSidebar === false) return;
 		this._$wrapSidebar.hide();
 		SideBar._isShowWrapSidebar = false;
+	}
+	
+	SideBar.prototype.lockWrapSidebar = function()
+	{
+		SideBar._isLockWrapSidebar = true;
+	}
+	
+	SideBar.prototype.unlockWrapSidebar = function()
+	{
+		SideBar._isLockWrapSidebar = false;
 	}
 	
 	return SideBar;
