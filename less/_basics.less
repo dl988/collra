@@ -49,8 +49,20 @@
 
 /* Tagit */
 .tagit-autocomplete {
-	position: fixed;
-	z-index: @z-normal;
+	
+	@media @phone {
+		width: 100px;
+	}
+	
+	@media @tablet {
+		position: fixed;
+	}
+	
+	@media @desktop {
+		position: fixed;
+	}
+	
+	z-index: @z-level-2;
 	
 	li {
 		padding: 5px 7px;

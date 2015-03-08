@@ -161,9 +161,8 @@ define([
 						var $dataAppend = $data.find('.item');
 						var $dataImage = $data.find('img');
 						
-						self._$masonry.append($dataAppend).masonry('appended', $dataAppend);
-						
 						new ImagesLoaded($dataImage, function(){
+							self._$masonry.append($dataAppend).masonry('appended', $dataAppend);
 							self._$masonry.masonry();
 						});
 					});
