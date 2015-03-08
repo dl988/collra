@@ -22,20 +22,65 @@ define([
 		this.generate();
 	}
 	
-	Grid.prototype.lockInfiniteScroll = function()
+	Grid.prototype.infiniteScrolll = function()
 	{
-		Grid._isLockInfiniteScroll = true;
+		this.lockInfiniteScroll = function()
+		{
+			Grid._isLockInfiniteScroll = true;
+		}
+		
+		this.unlockInfiniteScroll = function()
+		{
+			Grid._isLockInfiniteScroll = false;
+		}
+		
+		this.isLockInfiniteScroll = function()
+		{
+			if(Grid._isLockInfiniteScroll){
+				return true;
+			}
+		}
+		
+		this.init = function(el, data)
+		{
+			var self = this;
+			el._$doc.bind('scroll.grid', function() {
+				
+				if(self.isLockInfiniteScroll()) return;
+				
+				var $this = $(this);
+				var $pageNav = el._$doc.find('.js-page-nav');
+				var topPageNav = $pageNav.offset().top;
+				
+				if($this.scrollTop() >= topPageNav + $pageNav.innerHeight() - el._$win.height()){
+					
+					var $data = $('<div/>').render('template/list', data, function()
+					{
+						var $dataAppend = $data.find('.item');
+						var $dataImage = $data.find('img');
+						
+						new ImagesLoaded($dataImage, function(){
+							el._$masonry.append($dataAppend).masonry('appended', $dataAppend);
+							el._$masonry.masonry();
+						});
+					});
+				}
+			});
+		}
 	}
 	
-	Grid.prototype.unlockInfiniteScroll = function()
+	Grid.prototype.loading = function()
 	{
-		Grid._isLockInfiniteScroll = false;
-	}
-	
-	Grid.prototype.isLockInfiniteScroll = function()
-	{
-		if(Grid._isLockInfiniteScroll){
-			return true;
+		var self = this;
+		
+		this.show = function()
+		{
+			console.log(self._$grid);
+		}
+		
+		this.hide = function()
+		{
+			console.log('hide');
 		}
 	}
 	
@@ -45,6 +90,7 @@ define([
 		var self = this;
 		var collra = new collraApi();
 		var sidebar = new BlockSidebar;
+		var infiniteScrolll = new self.infiniteScrolll();
 		
 		self._$grid.render('template/list', collra.search(), function()
 		{
@@ -57,7 +103,7 @@ define([
 			
 			$pageNav.insertAfter('.js-grid');
 			
-			new ImagesLoaded($gridImage, function(){
+			new ImagesLoaded($gridImage, function(){		
 				
 				$.bridget('masonry', Masonry );
 				
@@ -68,17 +114,21 @@ define([
 				var isViewed = false;
 				
 				self._$grid.on('click', function(e){
-					var itemPosition = self._$doc.scrollTop();
-
-					var $itemClicked = $(e.target).closest('.item');
-					var $mainHomepage = $('.js-main-home-page');
-					var itemID = $itemClicked.data('id');
-					var itemDetail = collra.getItem(itemID);
+					
+					itemPosition = self._$doc.scrollTop();
+					$itemClicked = $(e.target).closest('.item');
+					itemID = $itemClicked.data('id');
+					itemDetail = collra.getItem(itemID);
+					
+					sidebar.lockWrapSidebar();
+					sidebar.hideWrapSidebar();
+					$mainHomepage = $('.js-main-home-page');
+					$mainHomepage.addClass('is-full-width');
 
 					if (itemID === null || isViewed === true || typeof itemDetail === 'undefined') return ;
 					
-					sidebar.lockWrapSidebar();
-					self.lockInfiniteScroll();
+					infiniteScrolll.lockInfiniteScroll();
+					
 					var $container = $('<div/>', {
 						class: 'is-viewed-item'
 					}).render('template/itemDetail', {
@@ -111,8 +161,6 @@ define([
 							class: 'back-button'
 						}).html('<i class="fa fa-angle-left"></i>');
 						
-						sidebar.hideWrapSidebar();
-						$mainHomepage.addClass('is-full-width');
 						var gridTmp = self._$grid.children().detach();
 						
 						self._$grid.append($container.append($backButton).append($itemAttribute).append($commentList));
@@ -129,7 +177,7 @@ define([
 							
 							sidebar.unlockWrapSidebar();
 							sidebar.showWrapSidebar();
-							self.unlockInfiniteScroll();
+							infiniteScrolll.unlockInfiniteScroll();
 							$mainHomepage.removeClass('is-full-width');
 
 							self._$grid.children().detach();
@@ -147,27 +195,7 @@ define([
 				});
 			});
 			
-			self._$doc.bind('scroll.grid', function() {
-				
-				if(self.isLockInfiniteScroll()) return;
-				
-				var $this = $(this);
-				var $pageNav = self._$doc.find('.js-page-nav');
-				var topPageNav = $pageNav.offset().top;
-				
-				if($this.scrollTop() >= topPageNav + $pageNav.innerHeight() - self._$win.height()){
-					var $data = $('<div/>').render('template/list', collra.search(), function()
-					{
-						var $dataAppend = $data.find('.item');
-						var $dataImage = $data.find('img');
-						
-						new ImagesLoaded($dataImage, function(){
-							self._$masonry.append($dataAppend).masonry('appended', $dataAppend);
-							self._$masonry.masonry();
-						});
-					});
-				}
-			})
+			infiniteScrolll.init(self, collra.search());
 		});
 	}
 	
