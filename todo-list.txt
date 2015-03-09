@@ -45,12 +45,39 @@ to request more items and Add to the result.
    
  + Implement for item detail and show a back button.
  
- - 6/3/2015
+ - 6/3/2015:
   + Center the number in start (Grid block)
   + Implement the search field in the block header
   + Unit test and fix bugs
- - 7/3/2015
+  
+ - 7/3/2015:
   + Improvement for block: header, grid (search field)
   + Unit test and fix bugs.
- - 8/3/2015
+  
+ - 8/3/2015:
   + Implement: infinite scroll
+  + Move js/vendor to components (can be use bower to mamage in the future)
+  + Fix bug for the block header when scroll..
+  
+ - 9/3/2015:
+  + Improvement the block grid: on click item (if the user change orientation the the layout should to render again)
+  
+<!----- Summary: -------->
+
+- Almost the functions are worked, not include (as Martin suggest):
+ + Filter search result
+ + Make animation of all the featured items in the sidebar
+ 
+- Need to resolve:
+ + UI/UX: should show a loading when init the layout or infinite scroll. The image of items are fill width so can be scale... 
+ + Performance: avoid using detach and append when click on a item (heavy to load if too more item...). In production should build the lessCss to css first.
+ + Test: need more device to test (Mac OS, iphone, ipad...)
+ + Refactor: Using a popup for the detail item
+ 
+ - Timeline:
+  + setup working environment: 3h
+  + research: 3h
+  + implement:
+    1. level 1 - html & css & responsive (header, sidebar, grid): 8h
+	2. level 1 - javascript (header, sidebar, grid) include implement, improvement, refactor, debug and fix bugs: 28h
+	3. level 2 - infinite scroll, include implement, improvement, refactor, debug and fix bugs: 8h 
