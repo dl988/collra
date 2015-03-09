@@ -54,6 +54,8 @@ define([
 				
 				if($this.scrollTop() >= topPageNav + $pageNav.innerHeight() - el._$win.height()){
 					
+					self.lockInfiniteScroll();
+					
 					var $data = $('<div/>').render('template/list', data, function()
 					{
 						var $dataAppend = $data.find('.item');
@@ -61,7 +63,7 @@ define([
 						
 						new ImagesLoaded($dataImage, function(){
 							el._$masonry.append($dataAppend).masonry('appended', $dataAppend);
-							el._$masonry.masonry();
+							self.unlockInfiniteScroll();
 						});
 					});
 				}
@@ -103,7 +105,7 @@ define([
 			
 			$pageNav.insertAfter('.js-grid');
 			
-			new ImagesLoaded($gridImage, function(){		
+			new ImagesLoaded($gridImage, function(){
 				
 				$.bridget('masonry', Masonry );
 				
