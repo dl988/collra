@@ -44,7 +44,7 @@ define([
 		this.init = function(el, data)
 		{
 			var self = this;
-			el._$doc.bind('scroll.grid', function() {
+			el._$doc.bind('scroll.infinite', function() {
 				
 				if(self.isLockInfiniteScroll()) return;
 				
@@ -77,12 +77,29 @@ define([
 		
 		this.show = function()
 		{
-			console.log(self._$grid);
+			console.log('show');
 		}
 		
 		this.hide = function()
 		{
 			console.log('hide');
+		}
+	}
+	
+	Grid.prototype.orientation = function()
+	{
+		Grid.size = null;
+		
+		this.set = function(data)
+		{
+			Grid.size = data;
+		}
+		
+		this.isChange = function(data)
+		{
+			if(data != Grid.size){
+				return true;
+			}
 		}
 	}
 	
@@ -93,6 +110,15 @@ define([
 		var collra = new collraApi();
 		var sidebar = new BlockSidebar;
 		var infiniteScrolll = new self.infiniteScrolll();
+		var orientation = new self.orientation();
+		
+		var updateOrientation = function()
+		{
+			orientation.set(self._$win.width());
+		}
+		
+		updateOrientation();
+		self._$win.on('resize.grid', updateOrientation);
 		
 		self._$grid.render('template/list', collra.search(), function()
 		{
@@ -126,6 +152,7 @@ define([
 					sidebar.hideWrapSidebar();
 					$mainHomepage = $('.js-main-home-page');
 					$mainHomepage.addClass('is-full-width');
+					orientationWidth = self._$win.width();
 
 					if (itemID === null || isViewed === true || typeof itemDetail === 'undefined') return ;
 					
@@ -184,10 +211,13 @@ define([
 
 							self._$grid.children().detach();
 							self._$grid.append(gridTmp);
-							self._$masonry.masonry();
 							
 							self._$html.scrollTop( itemPosition );
 							isViewed = false;
+							
+							if(orientation.isChange(orientationWidth)){
+								self._$masonry.masonry();
+							}
 							
 							return false;
 						});
