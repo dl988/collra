@@ -21,7 +21,18 @@ define([
 		var self = this;
 		_coreParams = new CoreParams;
 		
-		var data = {
+		var vi_data = {
+			'site': {
+				'homePage': '#/' + _coreParams.getLanguage()
+			},
+			'user': {
+				'firstName': 'Linh_vi',
+				'lastName': 'Nguyen_vi',
+				'avatar': 'img/user/avatar.png'
+			}
+		};
+		
+		var en_data = {
 			'site': {
 				'homePage': '#/' + _coreParams.getLanguage()
 			},
@@ -31,6 +42,12 @@ define([
 				'avatar': 'img/user/avatar.png'
 			}
 		};
+		
+		if(_coreParams.getLanguage() == 'vi'){
+			data = vi_data;
+		}else{
+			data = en_data;
+		}
 		
 		this._$header.render(this._layoutPath, data, function(){
 			self.initFunction();
