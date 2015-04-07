@@ -2,6 +2,7 @@ define([], function()
 {
 	var language  = 'en';
 	var params  = null;
+	var url  = null;
 	
 	function CoreParams(){};
 	
@@ -23,6 +24,16 @@ define([], function()
 	CoreParams.prototype.getParams = function()
 	{
 		return params;
+	}
+	
+	CoreParams.prototype.setBaseUrl = function(data)
+	{
+		url = data;
+	}
+	
+	CoreParams.prototype.getBaseUrl = function()
+	{
+		return url;
 	}
 	
 	return CoreParams;

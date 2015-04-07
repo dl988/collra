@@ -34,33 +34,38 @@
 	});
 	
 	require([
-		'domReady',
 		'CoreParams',
+		'domReady',
 		'Hasher',
 		'Crossroads',
 		'Modernizr',
 		'CollraApi',
 		'CollraLoader'
-	], function(domReady, CoreParams, Hasher, Crossroads){
+	], function(CoreParams, domReady, Hasher, Crossroads){
 		domReady(function(){
-			CoreParams = new CoreParams;
+			_config = {
+				'languageSupported': ['vi', 'en', ''],
+				'baseUrl': ''
+			}
+			_coreParams = new CoreParams;
 			
 			// Homepage routing
-			var homePage_routing = Crossroads.addRoute('/:language:');
+			var homePageRouting = Crossroads.addRoute('/:language:');
 			
-			homePage_routing.rules = {
-			  language : ['vi', 'en', '']
+			homePageRouting.rules = {
+			  language : _config.languageSupported
 			};
 			
-			homePage_routing.matched.add(function(language){
-				console.log('Default language is (bootstrap):' + CoreParams.getLanguage());
-				console.log('Your routing language:' + language);
+			homePageRouting.matched.add(function(language){
 				
 				if(language !== undefined){
-					CoreParams.setLanguage(language);
+					_coreParams.setLanguage(language);
 				}
 				
-				require(['HomePage']);
+				require(['HomePage'], function(HomePage){
+					HomePage = new HomePage;
+					HomePage.init();
+				});
 			});
 			
 			// Testpage routing

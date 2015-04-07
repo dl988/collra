@@ -1,54 +1,50 @@
 define([
+	'CoreParams',
 	'Tagit',
-], function()
+], function(CoreParams)
 {
 	
 	function Header()
 	{
-		this._$body = $('body');
-		this._$win = $(window);
+		this._layoutPath = 'template/blocks/header';
 		this._$header = $('.js-header');
-		this._$tagit = this._$header.find('.js-tagit');
 	};
 	
 	Header.prototype.init = function()
 	{
-		//this.setStatus();
-		this.Tagit();
+		
+		this.initLayout();
 	}
 	
-	Header.prototype.setStatus = function()
+	Header.prototype.initLayout = function()
 	{
 		var self = this;
+		_coreParams = new CoreParams;
 		
-		var checkIsXsmall = function()
-		{
-			if (self._$win.width() <= 768)
-			{
-				self._$header.removeClass('is-fixed');
-				self._$body.removeAttr('style');
-				return true;
+		var data = {
+			'site': {
+				'homePage': '#/' + _coreParams.getLanguage()
+			},
+			'user': {
+				'firstName': 'Linh',
+				'lastName': 'Nguyen',
+				'avatar': 'img/user/avatar.png'
 			}
-		}
+		};
 		
-		var update = function()
-		{
-			if(checkIsXsmall()) return;
-			
-			self._$header.addClass('is-fixed');
-			self._$body.css({'padding-top': self._$header.height() + 'px'});
-		}
-		
-		update();
-		
-		self._$win.on('resize.header', function(){
-			update();
+		this._$header.render(this._layoutPath, data, function(){
+			self.initFunction();
 		});
+	}
+	
+	Header.prototype.initFunction = function()
+	{
+		this.Tagit();
 	}
 	
 	Header.prototype.Tagit = function()
 	{
-		this._$tagit.tagit({
+		this._$header.find('.js-tagit').tagit({
 			availableTags: ["c++", "java", "php", "javascript", "ruby", "python", "c"],
 			autocomplete: {delay: 0, minLength: 2},
 			showAutocompleteOnFocus: true,
