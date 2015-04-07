@@ -2,10 +2,9 @@ define([
 	'Masonry',
 	'ImagesLoaded',
 	'BlockSidebar',
-	'Bridget',
-	'CollraApi',
-	'CollraLoader',
-], function(Masonry, ImagesLoaded, BlockSidebar)
+	'CoreParams',
+	'Bridget'
+], function(Masonry, ImagesLoaded, BlockSidebar, CoreParams)
 {
 	
 	function Grid()
@@ -20,6 +19,8 @@ define([
 	Grid.prototype.init = function()
 	{
 		this.generate();
+		CoreParams = new CoreParams;
+		console.log('Default language is (grid block):' + CoreParams.getLanguage());
 	}
 	
 	Grid.prototype.infiniteScrolll = function()
